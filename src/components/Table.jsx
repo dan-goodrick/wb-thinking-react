@@ -1,27 +1,35 @@
-import ModeButtons from "./ModeButtons"
-import Description from "./Description"
-import Hours from "./Hours"
-import Rate from "./Rate"
+import TableHeader from "./TableHeader";
+import AddButton from "./AddButton";
+import TableRow from "./TableRow";
+import "./Table.css";
 
-export default function Table() {
+export default function Table({ initialInvoiceList }) {
+  // let [isEditing, setIsEditing] = useState(true);
+  const rows = initialInvoiceList.map((el) => {
+    const { id, description, rate, hours } = el;
+    return (
+      <TableRow
+        key={id}
+        initialInvoiceData={{
+          description: description,
+          rate: rate,
+          hours: hours,
+        }}
+        initialIsEditing={false}
+      />
+    );
+  });
   return (
     <div>
       <table>
-        <tbody>
-          <tr>
-            <ModeButtons isEditing={false}/>
-            <Description isEditing={false} value="Web Developer"/>
-            <Rate isEditing={false} value="1000"/>
-            <Hours isEditing={false} value ="40"/>
-          </tr>
-          <tr>
-            <ModeButtons isEditing={true}/>
-            <Description isEditing={true} value="Zoo Keeper"/>
-            <Rate isEditing={true} value="1000000"/>
-            <Hours isEditing={true} value ="40"/>
-          </tr>
-        </tbody>
+        <thead>
+          <TableHeader />
+        </thead>
+        <tbody>{rows}</tbody>
+        <tfoot>
+          <AddButton />
+        </tfoot>
       </table>
     </div>
-  )
+  );
 }
