@@ -1,0 +1,5 @@
+[
+  { "id": 0, "description": "Content plan", "rate": 50, "hours": 4 },
+  { "id": 1, "description": "Copywriting", "rate": 50, "hours": 2 },
+  { "id": 2, "description": "Website design", "rate": 50, "hours": 5 }
+]
