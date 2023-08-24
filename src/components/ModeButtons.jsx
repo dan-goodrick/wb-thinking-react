@@ -1,13 +1,13 @@
-export default function ModeButtons({ isEditing }) {
+export default function ModeButtons({ isEditing, editClick, saveClick, deleteFunc }) {
 
   return isEditing ? (
     <td>
-      <button>Save</button>
+      <button onClick={saveClick}>Save</button>
     </td>
   ) : (
     <td>
-      <button>Edit</button>
-      <button>Delete</button>
+      <button onClick={editClick}>Edit</button>
+      <button onClick={deleteFunc}>Delete</button>
     </td>
   );
 }
